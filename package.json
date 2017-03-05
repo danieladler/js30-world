@@ -1,0 +1,25 @@
+{
+  "name": "js30-world",
+  "version": "1.0.0",
+  "description": "A front end playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieladler/js30-world.git"
+  },
+  "author": "Daniel Adler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danieladler/js30-world/issues"
+  },
+  "homepage": "https://github.com/danieladler/js30-world#readme"
+}
