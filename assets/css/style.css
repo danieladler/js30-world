@@ -10,6 +10,14 @@ html {
 body {
   font-family: "Helvetica Neue", sans-serif; }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row; }
+
+.container--main {
+  flex: 1; }
+
 .container {
   max-width: 1180px;
   margin-left: auto;
@@ -19,33 +27,73 @@ body {
     content: "";
     display: table; }
 
+#horizontal-scroll-test {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 80px;
+  white-space: nowrap;
+  height: 90%;
+  margin-top: 20px; }
+
 .cell {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  background-color: gold; }
-  .cell:last-child {
-    margin-right: 0; }
+  background-color: gold;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  margin-right: 5%; }
+
+.cell__content-wrapper {
+  margin: 0 auto;
+  display: flex;
+  align-items: center; }
+
+.cell__content-wrapper > a {
+  text-decoration: none; }
+
+.cell__content-wrapper > a:visited {
+  color: black; }
+
+.cell__number,
+.cell__title {
+  flex: 1; }
   @media screen and (min-width: 320px) {
-    .cell {
-      font-size: 64px;
+    .cell__number,
+    .cell__title {
+      font-size: 24px;
       color: green; } }
   @media screen and (min-width: 414px) {
-    .cell {
-      font-size: 54px;
+    .cell__number,
+    .cell__title {
       color: red; } }
   @media screen and (min-width: 768px) {
-    .cell {
-      font-size: 44px;
+    .cell__number,
+    .cell__title {
+      font-size: 34px;
       color: blue; } }
   @media screen and (min-width: 1024px) {
-    .cell {
-      font-size: 34px;
+    .cell__number,
+    .cell__title {
+      font-size: 44px;
       color: orange; } }
   @media screen and (min-width: 1440px) {
-    .cell {
-      font-size: 24px;
+    .cell__number,
+    .cell__title {
+      font-size: 54px;
       color: brown; } }
+
+.cell__icon {
+  margin: 0 10px; }
+
+.cell__content-wrapper:hover .cell__number {
+  transform: scale(15) translateX(22.5px) translateY(-0.25px);
+  transition: 0.8s ease; }
+.cell__content-wrapper:hover .cell__icon {
+  transform: translateY(-1000px);
+  transition: 0.8s ease-in; }
+.cell__content-wrapper:hover .cell__title {
+  transform: translateY(1000px);
+  transition: 0.8s ease-in; }
 
 /*# sourceMappingURL=style.css.map */

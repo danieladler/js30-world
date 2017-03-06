@@ -1,29 +1,84 @@
+#horizontal-scroll-test {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 80px;
+  white-space:nowrap;
+  height: 90%;
+  margin-top: 20px;
+}
+
 .cell {
-  @include span-columns(4);
   background-color: $color-background;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  margin-right: 5%;
+}
+
+.cell__content-wrapper {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.cell__content-wrapper > a {
+  text-decoration: none;
+}
+
+.cell__content-wrapper > a:visited {
+  color: black;
+}
+
+.cell__number,
+.cell__title {
+  flex: 1;
 
   @include mq(mobile) {
-    font-size: 64px;
+    font-size: 24px;
     color: green;
   }
 
   @include mq(largeMobile) {
-    font-size: 54px;
     color: red;
   }
 
   @include mq(tablet) {
-    font-size: 44px;
+    font-size: 34px;
     color: blue;
   }
 
   @include mq(desktop) {
-    font-size: 34px;
+    font-size: 44px;
     color: orange;
   }
 
   @include mq(largeDesktop) {
-    font-size: 24px;
+    font-size: 54px;
     color: brown;
+  }
+}
+
+.cell__icon {
+  margin: 0 10px;
+}
+
+.cell__content-wrapper:hover {
+  $transition-scale: 0.8s;
+
+  & .cell__number {
+    transform: scale(15) translateX(22.5px) translateY(-.25px);
+    transition: $transition-scale ease;
+  }
+
+  & .cell__icon {
+    transform: translateY(-1000px);
+    transition: $transition-scale ease-in;
+  }
+
+  & .cell__title {
+    transform: translateY(1000px);
+    transition: $transition-scale ease-in;
   }
 }
