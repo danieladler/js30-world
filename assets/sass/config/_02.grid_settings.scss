@@ -1,0 +1,45 @@
+@import "../vendor/neat/neat-helpers";
+
+// Overwrite default grid settings
+$max-width: 1180px;
+
+// Screen Sizes:
+$small-screen: 320px;
+$large-mobile-screen: 414px;
+$medium-screen: 768px;
+$large-screen: 1024px;
+$x-large-screen: 1440px;
+
+// Custom Breakpoints:
+$small-up: new-breakpoint(min-width $small-screen 12);
+$large-mobile-up: new-breakpoint(min-width $large-mobile-screen);
+$medium-up: new-breakpoint(min-width $medium-screen 12);
+$large-up: new-breakpoint(min-width $large-screen 12);
+$x-large-up: new-breakpoint(min-width $x-large-screen 12);
+
+@mixin mq($screen) {
+  // mobile
+  @if $screen == mobile {
+    @include media($small-up) { @content; }
+  }
+
+  // large mobile
+  @if $screen == largeMobile {
+    @include media($large-mobile-up) { @content; }
+  }
+
+  // tablet
+  @if $screen == tablet {
+    @include media($medium-up) { @content; }
+  }
+
+  // desktop
+  @if $screen == desktop {
+    @include media($large-up) { @content; }
+  }
+
+  // large desktop
+  @if $screen == largeDesktop {
+    @include media($x-large-up) { @content; }
+  }
+}

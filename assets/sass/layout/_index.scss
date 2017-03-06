@@ -1,0 +1,29 @@
+.cell {
+  @include span-columns(4);
+  background-color: $color-background;
+
+  @include mq(mobile) {
+    font-size: 64px;
+    color: green;
+  }
+
+  @include mq(largeMobile) {
+    font-size: 54px;
+    color: red;
+  }
+
+  @include mq(tablet) {
+    font-size: 44px;
+    color: blue;
+  }
+
+  @include mq(desktop) {
+    font-size: 34px;
+    color: orange;
+  }
+
+  @include mq(largeDesktop) {
+    font-size: 24px;
+    color: brown;
+  }
+}
