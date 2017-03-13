@@ -1,16 +1,17 @@
 ---
 layout: default
 ---
-
-{% for lesson in site.lessons %}
-  <div class="container container--{{lesson.container-position}}">
-    <div class="wrapper wrapper--{{lesson.cell-layout}}">
-      <div class="cell">
-        <a class="cell__content-wrapper" href="/lesson-{{ lesson.number }}">
-          <div class="cell__number">{{ lesson.number }}</div>
-          <div class="cell__title">{{ lesson.title }}</div>
-        </a>
+<div class="parallax">
+  {% for lesson in site.lessons %}
+    <div class="container container--{{lesson.container-position}}">
+      <div class="wrapper wrapper--{{lesson.cell-layout}}">
+        <div class="cell">
+          <a class="cell__content-wrapper" href="/lesson-{{ lesson.number }}">
+            <div class="cell__number">{{ lesson.number }}</div>
+            <div class="cell__title">{{ lesson.title }}</div>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
+</div>

@@ -13,3 +13,10 @@ body {
   @include outer-container;
   position: relative;
 }
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
