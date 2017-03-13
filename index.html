@@ -6,7 +6,10 @@ layout: default
   <div class="container">
     <div class="wrapper wrapper--{{lesson.cell-layout}}">
       <div class="cell">
-        <h1> {{ lesson.title }}</h1>
+        <a class="cell__content-wrapper" href="/lesson-{{ lesson.number }}">
+          <div class="cell__number">{{ lesson.number }}</div>
+          <div class="cell__title">{{ lesson.title }}</div>
+        </a>
       </div>
     </div>
   </div>
