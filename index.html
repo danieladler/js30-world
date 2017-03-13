@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% for lesson in site.lessons %}
-  <div class="container">
+  <div class="container container--{{lesson.container-position}}">
     <div class="wrapper wrapper--{{lesson.cell-layout}}">
       <div class="cell">
         <a class="cell__content-wrapper" href="/lesson-{{ lesson.number }}">

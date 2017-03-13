@@ -11,5 +11,5 @@ body {
 
 .container {
   @include outer-container;
-  border: 1px solid red;
+  position: relative;
 }

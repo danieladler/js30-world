@@ -1,6 +1,9 @@
+//////// left-to-right layout in grid ///////
 .wrapper {
   margin: 0 auto;
   text-align: center;
+  transition: $transition-common;
+  border: 1px solid red;
 
   @include media($small-up) {
     @include span-columns(12);
@@ -62,4 +65,30 @@
     @include shift(3);
     @include span-columns(6);
   }
+}
+
+//////// translateY & z-index for overlap ///////
+.container--y0-z2 {
+  transform: translateY(0);
+  z-index: 2;
+}
+
+.container--y-100-z1 {
+  transform: translateY(-100px);
+  z-index: 1;
+}
+
+.container--y-100-z2 {
+  transform: translateY(-75px);
+  z-index: 2;
+}
+
+.container--y-250-z2 {
+  transform: translateY(-250px);
+  z-index: 2;
+}
+
+.container--y0-z1 {
+  transform: translateY(0);
+  z-index: 1;
 }

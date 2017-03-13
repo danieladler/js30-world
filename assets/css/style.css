@@ -23,7 +23,7 @@ body {
   max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid red; }
+  position: relative; }
   .container::after {
     clear: both;
     content: "";
@@ -31,7 +31,9 @@ body {
 
 .wrapper {
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid red; }
   @media screen and (min-width: 320px) {
     .wrapper {
       float: left;
@@ -118,6 +120,26 @@ body {
     width: 48.82117%; }
     .wrapper--m6:last-child {
       margin-right: 0; } }
+
+.container--y0-z2 {
+  transform: translateY(0);
+  z-index: 2; }
+
+.container--y-100-z1 {
+  transform: translateY(-100px);
+  z-index: 1; }
+
+.container--y-100-z2 {
+  transform: translateY(-75px);
+  z-index: 2; }
+
+.container--y-250-z2 {
+  transform: translateY(-250px);
+  z-index: 2; }
+
+.container--y0-z1 {
+  transform: translateY(0);
+  z-index: 1; }
 
 .cell,
 .cell__content-wrapper {
