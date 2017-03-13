@@ -97,22 +97,21 @@
   }
 }
 
-.container--y0-z2 {
-  @include positionShift(0, 2)
+.container--grid:nth-child(2) {
+  @include positionShift(100, 1)
 }
-
-.container--y-100-z1 {
-  @include positionShift(-100px, 1);
+.container--grid:nth-child(3) {
+  @include positionShift(-100px, 2);
 }
-
-.container--y-100-z2 {
-  @include positionShift(-75px, 2)
+.container--grid:nth-child(4) {
+  @include positionShift(-75px, 1)
 }
-
-.container--y-250-z2 {
+.container--grid:nth-child(5) {
   @include positionShift(-250px, 2)
 }
-
-.container--y0-z1 {
+.container--grid:nth-child(6) {
   @include positionShift(0, 1);
+}
+.container--grid:nth-child(7) {
+  // TBD
 }

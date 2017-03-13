@@ -1,3 +1,7 @@
+.header__container {
+  @include outer-container;
+}
+
 .header {
   background-color: $color-text;
   padding: 1rem 0;

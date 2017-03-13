@@ -2,5 +2,4 @@
 number: "02"
 title: JS & CSS Clock
 cell-layout: 'm6'
-container-position: 'y-100-z2'
 ---
