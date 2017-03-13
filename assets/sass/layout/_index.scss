@@ -90,37 +90,29 @@
 
 
 //////// translateY & z-index for overlap ///////
-.container--y0-z2 {
+@mixin positionShift($translateY, $z-index) {
   @include media($medium-up) {
-    transform: translateY(0);
-    z-index: 2;
+    transform: translateY(#{$translateY});
+    z-index: #{$z-index};
   }
+}
+
+.container--y0-z2 {
+  @include positionShift(0, 2)
 }
 
 .container--y-100-z1 {
-  @include media($medium-up) {
-    transform: translateY(-100px);
-    z-index: 1;
-  }
+  @include positionShift(-100px, 1);
 }
 
 .container--y-100-z2 {
-  @include media($medium-up) {
-    transform: translateY(-75px);
-    z-index: 2;
-  }
+  @include positionShift(-75px, 2)
 }
 
 .container--y-250-z2 {
-  @include media($medium-up) {
-    transform: translateY(-250px);
-    z-index: 2;
-  }
+  @include positionShift(-250px, 2)
 }
 
 .container--y0-z1 {
-  @include media($medium-up) {
-    transform: translateY(0);
-    z-index: 1;
-  }
+  @include positionShift(0, 1);
 }
