@@ -70,14 +70,14 @@
 // translateZ for parallax effect, only to be applied on
 // screen sizes medium (~800px) and up
 @include media($medium-up) {
-  .container {
+  .container--parallax {
     margin-bottom: 2rem;
   }
-  .container:nth-child(odd) {
+  .container--parallax:nth-child(odd) {
     transform: translateZ(0);
   }
 
-  .container:nth-child(even) {
+  .container--parallax:nth-child(even) {
     transform: translateZ(-1px) scale(2);
     margin-bottom: 2rem;
   }
