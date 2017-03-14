@@ -1,68 +1,7 @@
-//////// left-to-right layout in grid ///////
-.wrapper {
-  margin: 0 auto;
-  text-align: center;
-  transition: $transition-common;
-
-  @include media($small-up) {
-    @include span-columns(12);
-  }
-}
-
-// 3-column cells
-.wrapper--l4 {
-  @include media($medium-up) {
-    @include span-columns(4);
-  }
-}
-
-.wrapper--m4 {
-  @include media($medium-up) {
-    @include shift(4);
-    @include span-columns(4);
-  }
-}
-
-.wrapper--r4 {
-  @include media($medium-up) {
-    @include shift(8);
-    @include span-columns(4);
-  }
-}
-
-// 4-column cells
-.wrapper--l3 {
-  @include media($medium-up) {
-    @include span-columns(3);
-  }
-}
-
-.wrapper--lm3 {
-  @include media($medium-up) {
-    @include shift(3);
-    @include span-columns(3);
-  }
-}
-
-.wrapper--rm3 {
-  @include media($medium-up) {
-    @include shift(6);
-    @include span-columns(3);
-  }
-}
-
-.wrapper--r3 {
-  @include media($medium-up) {
-    @include shift(9);
-    @include span-columns(3);
-  }
-}
-
-// 6-column cells
-.wrapper--m6 {
-  @include media($medium-up) {
-    @include shift(3);
-    @include span-columns(6);
+// standard container
+.container {
+  @media(screen and max-width: 800px) {
+    border-bottom: 1px solid $color-text;
   }
 }
 
@@ -72,46 +11,119 @@
   .container--parallax {
     margin-bottom: 2rem;
   }
-  .container--parallax:nth-child(odd) {
+  .container--parallax:nth-of-type(odd) {
     transform: translateZ(0);
   }
 
-  .container--parallax:nth-child(even) {
+  .container--parallax:nth-of-type(even) {
     transform: translateZ(-1px) scale(2);
     margin-bottom: 2rem;
   }
 }
 
-.container {
-  @media(screen and max-width: 800px) {
-    border-bottom: 1px solid $color-text;
-  }
-}
-
-
-//////// translateY & z-index for overlap ///////
-@mixin positionShift($translateY, $z-index) {
+//////// margin-top & z-index for container spacing & overlap ///////
+@mixin positionShift($margin-top, $z-index) {
   @include media($medium-up) {
-    transform: translateY(#{$translateY});
+    margin-top: #{$margin-top};
     z-index: #{$z-index};
   }
 }
 
-.container--grid:nth-child(2) {
-  @include positionShift(100, 1)
+//////// left-to-right layout in grid ///////
+.grid-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  transition: $transition-common;
+
+  @include media($small-up) {
+    @include span-columns(12);
+  }
 }
-.container--grid:nth-child(3) {
+
+@mixin grid-location($shift, $span-columns) {
+  @include media($medium-up) {
+    @include shift($shift);
+    @include span-columns($span-columns);
+  }
+}
+
+//////// individual containers/wrappers around cells ///////
+.container--grid:nth-of-type(1) {
+  @include positionShift(30px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(0, 4);
+  }
+}
+
+.container--grid:nth-of-type(2) {
+  @include positionShift(100px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(4,4);
+  }
+}
+
+.container--grid:nth-of-type(3) {
   @include positionShift(-100px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(8,4);
+  }
 }
-.container--grid:nth-child(4) {
-  @include positionShift(-75px, 1)
+
+.container--grid:nth-of-type(4) {
+  @include positionShift(-75px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(0,3);
+  }
 }
-.container--grid:nth-child(5) {
-  @include positionShift(-250px, 2)
+
+.container--grid:nth-of-type(5) {
+  @include positionShift(-250px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(3,3);
+  }
 }
-.container--grid:nth-child(6) {
+
+.container--grid:nth-of-type(6) {
   @include positionShift(0, 1);
+
+  & .grid-wrapper {
+    @include grid-location(3,6);
+  }
 }
-.container--grid:nth-child(7) {
-  // TBD
+
+.container--grid:nth-of-type(7) {
+  @include positionShift(0, 2);
+
+  & .grid-wrapper {
+    @include grid-location(6,3);
+  }
+}
+
+.container--grid:nth-of-type(8) {
+  @include positionShift(150px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(4,4)
+  }
+}
+
+.container--grid:nth-of-type(9) {
+  @include positionShift(0, 2);
+
+  & .grid-wrapper {
+    @include grid-location(0, 4)
+  }
+}
+
+.container--grid:nth-of-type(10) {
+  @include positionShift(250px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(3,6)
+  }
 }
