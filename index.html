@@ -1,32 +1,17 @@
 ---
 layout: default
 ---
-
-<div id="horizontal-scroll-test">
-  <div class="cell">
-    <a class="cell__content-wrapper">
-      <span class="cell__number">01</span>
-      <i class="fa fa-headphones fa-5x cell__icon" aria-hidden="true"></i>
-      <span class="cell__title">JavaScript Drum Kit</span>
-    </a>
-  </div>
-  <div class="cell">
-    <a class="cell__content-wrapper">
-      <span class="cell__number">02</span>
-      <i class="fa fa-clock-o fa-5x cell__icon" aria-hidden="true"></i>
-      <span class="cell__title">JS & CSS Clock</span>
-    </a>
-  </div>
-  <div class="cell">
-    <h2 class="cell__title">C</h2>
-  </div>
-  <div class="cell">
-    <h2 class="cell__title">D</h2>
-  </div>
-  <div class="cell">
-    <h2 class="cell__title">E</h2>
-  </div>
-  <div class="cell">
-    <h2 class="cell__title">F</h2>
-  </div>
+<div class="parallax">
+  {% for lesson in site.lessons %}
+    <div class="container container--grid container--parallax ">
+      <div class="grid-wrapper">
+        <div class="cell">
+          <a class="cell__content-wrapper" href="/lesson-{{ lesson.number }}">
+            <div class="cell__number">{{ lesson.number }}</div>
+            <div class="cell__title">{{ lesson.title }}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>

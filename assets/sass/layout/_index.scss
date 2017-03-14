@@ -1,84 +1,129 @@
-#horizontal-scroll-test {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 80px;
-  white-space:nowrap;
-  height: 90%;
-  margin-top: 20px;
+// standard container
+.container {
+  @media(screen and max-width: 800px) {
+    border-bottom: 1px solid $color-text;
+  }
 }
 
-.cell {
-  background-color: $color-background;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 90%;
-  height: 100%;
-  margin-right: 5%;
+// translateZ for parallax effect, only to be applied on
+// screen sizes medium (~800px) and up
+@include media($medium-up) {
+  .container--parallax {
+    margin-bottom: 2rem;
+  }
+  .container--parallax:nth-of-type(odd) {
+    transform: translateZ(0);
+  }
+
+  .container--parallax:nth-of-type(even) {
+    transform: translateZ(-1px) scale(2);
+    margin-bottom: 2rem;
+  }
 }
 
-.cell__content-wrapper {
+//////// margin-top & z-index for container spacing & overlap ///////
+@mixin positionShift($margin-top, $z-index) {
+  @include media($medium-up) {
+    margin-top: #{$margin-top};
+    z-index: #{$z-index};
+  }
+}
+
+//////// left-to-right layout in grid ///////
+.grid-wrapper {
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
+  text-align: center;
+  transition: $transition-common;
 
-.cell__content-wrapper > a {
-  text-decoration: none;
-}
-
-.cell__content-wrapper > a:visited {
-  color: black;
-}
-
-.cell__number,
-.cell__title {
-  flex: 1;
-
-  @include mq(mobile) {
-    font-size: 24px;
-    color: green;
-  }
-
-  @include mq(largeMobile) {
-    color: red;
-  }
-
-  @include mq(tablet) {
-    font-size: 34px;
-    color: blue;
-  }
-
-  @include mq(desktop) {
-    font-size: 44px;
-    color: orange;
-  }
-
-  @include mq(largeDesktop) {
-    font-size: 54px;
-    color: brown;
+  @include media($small-up) {
+    @include span-columns(12);
   }
 }
 
-.cell__icon {
-  margin: 0 10px;
+@mixin grid-location($shift, $span-columns) {
+  @include media($medium-up) {
+    @include shift($shift);
+    @include span-columns($span-columns);
+  }
 }
 
-.cell__content-wrapper:hover {
-  $transition-scale: 0.8s;
+//////// individual containers/wrappers around cells ///////
+.container--grid:nth-of-type(1) {
+  @include positionShift(30px, 2);
 
-  & .cell__number {
-    transform: scale(15) translateX(22.5px) translateY(-.25px);
-    transition: $transition-scale ease;
+  & .grid-wrapper {
+    @include grid-location(0, 4);
   }
+}
 
-  & .cell__icon {
-    transform: translateY(-1000px);
-    transition: $transition-scale ease-in;
+.container--grid:nth-of-type(2) {
+  @include positionShift(100px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(4,4);
   }
+}
 
-  & .cell__title {
-    transform: translateY(1000px);
-    transition: $transition-scale ease-in;
+.container--grid:nth-of-type(3) {
+  @include positionShift(-100px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(8,4);
+  }
+}
+
+.container--grid:nth-of-type(4) {
+  @include positionShift(-75px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(0,3);
+  }
+}
+
+.container--grid:nth-of-type(5) {
+  @include positionShift(-250px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(3,3);
+  }
+}
+
+.container--grid:nth-of-type(6) {
+  @include positionShift(0, 1);
+
+  & .grid-wrapper {
+    @include grid-location(3,6);
+  }
+}
+
+.container--grid:nth-of-type(7) {
+  @include positionShift(0, 2);
+
+  & .grid-wrapper {
+    @include grid-location(6,3);
+  }
+}
+
+.container--grid:nth-of-type(8) {
+  @include positionShift(150px, 1);
+
+  & .grid-wrapper {
+    @include grid-location(4,4)
+  }
+}
+
+.container--grid:nth-of-type(9) {
+  @include positionShift(0, 2);
+
+  & .grid-wrapper {
+    @include grid-location(0, 4)
+  }
+}
+
+.container--grid:nth-of-type(10) {
+  @include positionShift(250px, 2);
+
+  & .grid-wrapper {
+    @include grid-location(3,6)
   }
 }

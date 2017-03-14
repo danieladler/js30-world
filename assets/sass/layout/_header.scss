@@ -1,0 +1,13 @@
+.header__container {
+  @include outer-container;
+}
+
+.header {
+  background-color: $color-text;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}

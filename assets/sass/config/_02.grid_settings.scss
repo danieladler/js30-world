@@ -5,8 +5,8 @@ $max-width: 1180px;
 
 // Screen Sizes:
 $small-screen: 320px;
-$large-mobile-screen: 414px;
-$medium-screen: 768px;
+$large-mobile-screen: 400px;
+$medium-screen: 800px;
 $large-screen: 1024px;
 $x-large-screen: 1440px;
 
@@ -17,29 +17,26 @@ $medium-up: new-breakpoint(min-width $medium-screen 12);
 $large-up: new-breakpoint(min-width $large-screen 12);
 $x-large-up: new-breakpoint(min-width $x-large-screen 12);
 
-@mixin mq($screen) {
-  // mobile
-  @if $screen == mobile {
-    @include media($small-up) { @content; }
+// mixin for media queries
+@mixin mq($screen-up) {
+  // small/mobile
+  @if $screen-up == small-up {
+    @media #{$small-up} { @content; }
   }
-
   // large mobile
-  @if $screen == largeMobile {
-    @include media($large-mobile-up) { @content; }
+  @if $screen-up == large-mobile-up {
+    @media #{$large-mobile-up} { @content; }
   }
-
   // tablet
-  @if $screen == tablet {
-    @include media($medium-up) { @content; }
+  @if $screen-up == medium-up {
+    @media #{$medium-up} { @content; }
   }
-
-  // desktop
-  @if $screen == desktop {
-    @include media($large-up) { @content; }
+  // large/desktop
+  @if $screen-up == large-up {
+    @media #{$large-up} { @content; }
   }
-
-  // large desktop
-  @if $screen == largeDesktop {
-    @include media($x-large-up) { @content; }
+  //  extra large/xl desktop
+  @if $screen-up == x-large-up {
+    @media #{$x-large-up} { @content; }
   }
 }
