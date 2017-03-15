@@ -1,5 +1,4 @@
 ---
 number: "03"
-title: TBD
-cell-layout: 'rm3'
+title: Update CSS Variables with JS
 ---
