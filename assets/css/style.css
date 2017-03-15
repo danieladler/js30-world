@@ -92,6 +92,12 @@ body {
     width: 31.76157%; }
     .container--grid:nth-of-type(1) .grid-wrapper:last-child {
       margin-right: 0; } }
+.container--grid:nth-of-type(1) .cell__content-wrapper {
+  background-size: cover;
+  background-repeat: none;
+  background-image: url("../lesson_files/01/lesson_01.png"); }
+  .container--grid:nth-of-type(1) .cell__content-wrapper:hover {
+    background-image: url("../lesson_files/01/lesson_01.gif"); }
 
 @media screen and (min-width: 800px) {
   .container--grid:nth-of-type(2) {
@@ -220,7 +226,9 @@ body {
       margin-right: 0; } }
 
 .cell,
-.cell__content-wrapper {
+.cell__content-wrapper,
+.cell__number,
+.cell__title {
   transition: all 0.3s ease; }
 
 .cell {
@@ -239,6 +247,9 @@ body {
   .cell__content-wrapper:hover {
     background-color: #998100;
     color: white; }
+    .cell__content-wrapper:hover .cell__number,
+    .cell__content-wrapper:hover .cell__title {
+      opacity: 0; }
 
 .cell__number {
   position: absolute;

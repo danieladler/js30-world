@@ -47,12 +47,24 @@
   }
 }
 
-//////// individual containers/wrappers around cells ///////
+//////// individual containers/wrappers for each lesson ///////
+// NB: argument in nth-of-type(n) corresponds to lesson number
+
 .container--grid:nth-of-type(1) {
   @include positionShift(30px, 2);
 
   & .grid-wrapper {
     @include grid-location(0, 4);
+  }
+
+  & .cell__content-wrapper {
+    background-size: cover;
+    background-repeat: none;
+    background-image: url("../lesson_files/01/lesson_01.png");
+
+    &:hover {
+      background-image: url("../lesson_files/01/lesson_01.gif");
+    }
   }
 }
 

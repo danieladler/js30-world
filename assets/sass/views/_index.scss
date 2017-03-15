@@ -1,5 +1,7 @@
 .cell,
-.cell__content-wrapper {
+.cell__content-wrapper,
+.cell__number,
+.cell__title {
   transition: $transition-common;
 }
 
@@ -21,6 +23,11 @@
   &:hover {
     background-color: darken($color-background, 20%);
     color: white;
+
+    & .cell__number,
+      .cell__title {
+        opacity: 0;
+    }
   }
 }
 
