@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Array Cardio #1</title>
+  </head>
+  <body>
+    <h1 class="alert"> Everything for this lesson is in the Developer console!</h1>
+    <div class="keys">
+      <span class="symbol"> ~~> </span>
+      <div class="key">
+        <span class="text">option</span>
+      </div>
+      <span class="symbol"> + </span>
+      <div class="key">
+        <span class="text">cmd</span>
+      </div>
+      <span class="symbol"> + </span>
+      <div class="key">
+        <span class="text">J</span>
+      </div>
+      <span class="symbol"> <~~ </span>
+    </div>
+    <script>
+       const inventors = [
+        { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+        { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+        { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+        { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+        { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+        { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+        { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+        { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+        { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+        { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+        { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+        { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+      ];
+
+      const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+
+      // Array.prototype.filter()
+      // 1. Filter the list of inventors for those who were born in the 1500's
+      const fifteenthCentury = inventors.filter(i => {
+          if (i.year >= 1500 && i.year <= 1599) {
+            return true
+      	  }
+      });
+
+      console.log("*** 1 ***");
+      console.log("Inventors born in the 1500s: ", fifteenthCentury);
+
+      // Array.prototype.map()
+      // 2. Give us an array of the inventors' first and last names
+
+      // const fullNames = inventors.map(i => (i.first + " " + i.last))
+      const fullNames = inventors.map(i => `${i.first} ${i.last}`)
+      console.log("*** 2 ***");
+      console.log("Array of inventors' first & last names: ", fullNames);
+
+      // Array.prototype.sort()
+      // 3. Sort the inventors by birthdate, oldest to youngest
+        // const sorted = inventors.sort((a,b) => {
+        //   if (a.year > b.year) {
+        //     return 1
+        //   } else {
+        //     return -1
+        //   }
+        // })
+
+      const sorted = inventors.sort((a,b) => a.year > b.year ?  1 :  -1)
+      // const sorted1 = inventors.sort((a,b) => a.year < b.year ? -1 : 1);
+
+      // const sortedList = sorted.map(i => i.year)
+      console.log("*** 3 ***");
+      console.log("Inventors sorted by birthdate, oldest to youngest: ");
+      console.table(sorted);
+
+      // Array.prototype.reduce()
+      // 4. How many years did all the inventors live?
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year)
+      }, 0)
+      console.log("*** 4 ***");
+      console.log("Total years lived by all inventors: ", totalYears);
+
+      // 5. Sort the inventors by years lived
+      const byLifespan = inventors.sort((a,b) => {
+        const current = a.passed - a.year;
+        const next = b.passed - b.year;
+        return next > current ? 1 : -1;
+      });
+      console.log("*** 5 ***");
+      console.log("Inventors sorted by lifespan");
+      console.table(byLifespan);
+
+      // confirm:
+      const lifespansInOrder = byLifespan.map(i => {return (i.passed - i.year)});
+      console.log("Lifespans, longest to shortest: ", lifespansInOrder);
+
+      // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+      // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+        console.log("*** 5 ***");
+        console.log("look at source code to see how this exercise is applied");
+
+          // const target = document.querySelector('.mw-category');
+          // const links = Array.from(target.querySelectorAll('a'));
+          // const de = links.filter(l => l.textContent.includes('de'));
+
+      // 7. sort Exercise
+      // Sort the people alphabetically by last name
+      var byLastName = people.sort((a,b) => {
+        var [currentLast, currentFirst] = a.split(', ');
+        var [nextLast, nextFirst] = b.split(', ');
+        return currentLast < nextLast ? -1 : 1;
+      });
+      console.log("*** 7 ***");
+      console.log("People sorted alphabetically by last name: ", byLastName);
+
+      // 8. Reduce Exercise
+      // Sum up the instances of each of these
+      const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+      var count = data.reduce((counter, vehicle) => {
+        if (!counter[vehicle]) {
+          counter[vehicle] = 0;
+        }
+        counter[vehicle]++;
+        return counter;
+      }, {});
+
+      console.log("*** 8 ***");
+      console.log("Array of transportation types: ", data);
+      console.log("Instances of each type of transportation: ", count);
+
+    </script>
+  </body>
+</html>
+<style>
+  body {
+    font-family: "Helvetica", sans-serif;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .keys {
+    margin: 0 auto;
+  }
+
+  .key {
+    width: 50px;
+    min-height: 50px;
+    border: 1px solid darkgrey;
+    border-radius: 25%;
+    display: inline-flex;
+  }
+
+  .text,
+  .symbol {
+    margin: auto;
+    font-weight: bold;
+  }
+
+  .symbol {
+    font-size: 2rem;
+  }
+</style>
