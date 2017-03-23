@@ -74,7 +74,7 @@
       // const sortedList = sorted.map(i => i.year)
       console.log("*** 3 ***");
       console.log("Inventors sorted by birthdate, oldest to youngest: ");
-      console.table(sorted);
+      console.log(sorted);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
@@ -92,7 +92,7 @@
       });
       console.log("*** 5 ***");
       console.log("Inventors sorted by lifespan");
-      console.table(byLifespan);
+      console.log(byLifespan);
 
       // confirm:
       const lifespansInOrder = byLifespan.map(i => {return (i.passed - i.year)});
