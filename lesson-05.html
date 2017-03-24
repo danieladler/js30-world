@@ -3,9 +3,57 @@
   <head>
     <meta charset="UTF-8">
     <title>Flex Panels Image Gallery</title>
+    <link href="https://fonts.googleapis.com/css?family=Lily+Script+One" rel="stylesheet">
   </head>
   <body>
+    <div class="panels">
+      <div class="panel" data-panel="p1">
+        <p class="panel__text"> A </p>
+        <p class="panel__text"> B </p>
+        <p class="panel__text"> C </p>
+      </div>
+      <div class="panel" data-panel="p2">
+        <p class="panel__text"> 🍓 </p>
+        <p class="panel__text"> 🍰 </p>
+        <p class="panel__text"> 🍴 </p>
+      </div>
+      <div class="panel" data-panel="p3">
+        <p class="panel__text"> 🌤 </p>
+        <p class="panel__text"> 🚴 </p>
+        <p class="panel__text"> 🌊 </p>
+      </div>
+      <div class="panel" data-panel="p4">
+        <p class="panel__text"> 🎶 </p>
+        <p class="panel__text"> 🎹 </p>
+        <p class="panel__text"> 🥁 </p>
+      </div>
+      <div class="panel" data-panel="p5">
+        <p class="panel__text"> 🏘 </p>
+        <p class="panel__text"> 🏙 </p>
+        <p class="panel__text"> 🚶 </p>
+      </div>
+    </div>
+
     <script>
+      const panels = document.querySelectorAll('.panel');
+
+      function toggleOpen() {
+        this.classList.toggle('open');
+      }
+
+      function toggleActive(e) {
+        if (e.propertyName.includes('flex')) {
+          this.classList.toggle('open-active');
+        };
+      }
+
+      panels.forEach(p => {
+        p.addEventListener('click', toggleOpen);
+      });
+
+      panels.forEach(p => {
+        p.addEventListener('transitionend', toggleActive);
+      });
     </script>
   </body>
 </html>
@@ -14,8 +62,94 @@
     font-family: "Helvetica", sans-serif;
     display: flex;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .panels {
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+  }
+
+  .panel {
+    flex: 1;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    transition: all 0.75s cubic-bezier(0.59, -0.55, 0.12, 1.68);
+    font-size: 100px;
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+  }
+
+  .panel.open {
+    font-size: 125px;
+    flex: 3;
+  }
+
+  .panel > * {
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+  }
+
+  .panel__text:first-child {
+    transform: translateY(-100%);
+  }
+
+  .panel.open-active .panel__text:first-child {
+    transform: translateY(0);
+  }
+
+  .panel__text:last-child {
+    transform: translateY(100%);
+  }
+
+  .panel.open-active .panel__text:last-child {
+    transform: translateY(0);
+  }
+
+  .panel__text {
+    margin: 0;
+    font-family: "Lily Script One";
+    color: white;
+    text-shadow: 1px 1px 4px black;
+  }
+
+  div[data-panel='p1'] {
+    background-image: url('https://unsplash.it/1500/1500?image=1');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  div[data-panel='p2'] {
+    background-image: url('https://unsplash.it/1500/1500?image=102');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  div[data-panel='p3'] {
+    background-image: url('https://unsplash.it/1500/1500?image=203');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  div[data-panel='p4'] {
+    background-image: url('https://unsplash.it/1500/1500?image=304');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  div[data-panel='p5'] {
+    background-image: url('https://unsplash.it/1500/1500?image=405');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 </style>
